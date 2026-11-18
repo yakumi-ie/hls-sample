@@ -14,7 +14,7 @@
 
 ## Chromium で先頭に戻すと約6秒飛ぶケース
 
-- 再現用: [rounded.m3u8](https://yakumi-ie.github.io/hls-sample/cmaf-start-seek/rounded.m3u8)
+- 再現用: [index.m3u8](https://yakumi-ie.github.io/hls-sample/cmaf-start-seek/index.m3u8)
 - 比較用: [precise.m3u8](https://yakumi-ie.github.io/hls-sample/cmaf-start-seek/precise.m3u8)
 
 Chromium の hls.js デモで `startPosition: 7` を指定し、2番目のセグメントから再生してから `document.querySelector('video').currentTime = 0` で先頭に戻します。
