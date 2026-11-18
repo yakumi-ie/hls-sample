@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HLS 再生サンプル</title>
+<h1>HLS 再生サンプル</h1>
+<video id="player" controls playsinline width="640" style="max-width: 100%"></video>
+<p><a href="./sample.m3u8">プレイリスト（sample.m3u8）</a></p>
+<p id="status" role="status"></p>
+<script src="https://unpkg.com/hls.js@1.6.15/dist/hls.min.js"></script>
+<script>
+  const player = document.querySelector('#player');
+  const playlist = document.querySelector('a').href;
+  const status = document.querySelector('#status');
+  player.addEventListener('error', () => {
+    status.textContent = '動画を再生できませんでした。';
+  });
+  if (player.canPlayType('application/vnd.apple.mpegurl')) {
+    player.src = playlist;
+  } else if (window.Hls?.isSupported()) {
+    const hls = new Hls();
+    hls.on(Hls.Events.ERROR, (_event, error) => {
+      if (error.fatal) status.textContent = `再生エラー: ${error.details}`;
+    });
+    hls.loadSource(playlist);
+    hls.attachMedia(player);
+  } else {
+    status.textContent = 'このブラウザーでは HLS を再生できません。';
+  }
+</script>
+</html>
