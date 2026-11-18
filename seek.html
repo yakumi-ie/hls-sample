@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HLS シーク開始サンプル</title>
+<h1>HLS シーク開始サンプル</h1>
+<p>既定は 60 秒。URL の <code>?t=90</code> で開始秒を変更できます。</p>
+<video id="player" data-start="60" controls playsinline preload="metadata" width="640" style="max-width: 100%"></video>
+<p><a href="./index.html">通常の再生サンプル</a></p>
+<p id="status" role="status"></p>
+<script src="https://unpkg.com/hls.js@1.6.15/dist/hls.min.js"></script>
+<script src="./player.js"></script>
+</html>
